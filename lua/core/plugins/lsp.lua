@@ -6,16 +6,12 @@ local M = {
     {"neovim/nvim-lspconfig"},             -- Required
     {"williamboman/mason.nvim"},           -- Optional
     {"williamboman/mason-lspconfig.nvim"}, -- Optional
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
   },
 }
 
 function M.config()
   local lsp = require('lsp-zero').preset({
-    name = "recommended"
+    name = "lsp-only"
   })
   lsp.on_attach(function(_, bufnr)
     -- see :help lsp-zero-keybindings
@@ -31,7 +27,6 @@ function M.config()
 
   lsp.skip_server_setup({'rust_analyzer'})
 
-  lsp.setup()
 end
 
 return M

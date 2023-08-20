@@ -19,8 +19,9 @@ function M.config()
       section_separators = {
         left = "",
         right = "",
-      }
-    }
+      },
+      globalstatus = true,
+    },
   })
 end
 

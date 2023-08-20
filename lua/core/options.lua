@@ -30,3 +30,4 @@ vim.opt.autoindent = true
 -- Line numbers
 vim.wo.number = true
 
+vim.opt.pumblend = 15

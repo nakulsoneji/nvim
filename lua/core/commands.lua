@@ -17,3 +17,6 @@ vim.fn.sign_define("DiagnosticSignInfo",
   {text = " ", texthl = "DiagnosticSignInfo"})
 vim.fn.sign_define("DiagnosticSignHint",
   {text = " ", texthl = "DiagnosticSignHint"})
+
+vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#89b4fa", bg = "NONE", italic = true })
+
