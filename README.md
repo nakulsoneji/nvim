@@ -1,2 +1,1 @@
-# nvim
-my nvim config
+# omg is that neovim???
