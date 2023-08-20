@@ -1,1 +1,1 @@
-# omg is that neovim???
+small nvim config
