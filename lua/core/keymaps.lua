@@ -6,3 +6,5 @@ map('n', '<leader>fb', "<cmd>Telescope buffers<cr>", {})
 map('n', '<leader>fh', "<cmd>Telescope help_tags<cr>", {})
 
 map('n', '<leader>ft', "<cmd>NvimTreeToggle<cr>")
+
+map({'n','t'}, '<A-d>', '<cmd>Lspsaga term_toggle<cr>', {})

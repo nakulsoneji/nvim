@@ -11,8 +11,8 @@ local M = {
       dependencies = { "rafamadriz/friendly-snippets" }
     },
     "saadparwaiz1/cmp_luasnip",
-    "onsails/lspkind.nvim"
-  }
+    "onsails/lspkind.nvim",
+  },
 }
 
 function M.config()
@@ -29,16 +29,27 @@ function M.config()
       end,
     },
     --[[formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        local kind = require("lspkind").cmp_format({ preset='codicons', mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = "" .. (strings[1] or "") .. " "
-        kind.menu = "    " .. (strings[2] or "") .. ""
+      format = function(entry, item)
+        item.menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[Snippet]",
+          path = "[Path]",
+        })[entry.source.name]
 
-        return kind
+        return item
       end,
     },]]--
+    window = {
+      completion = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+      },
+      documentation = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+      }
+    },
     experimental = {
       ghost_text = true,
     },
@@ -46,8 +57,9 @@ function M.config()
       fields = {"abbr", "menu", "kind"},
       format = require('lspkind').cmp_format({
         mode = 'symbol_text', -- show only symbol and text annotations
-        preset = 'codicons',
         maxwidth = 50, -- prevent the popup from showing more than provided characters
+        preset = "codicons",
+        symbol_map = { Copilot = " " },
         ellipsis_char = '...',-- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead })
       }),
     },
@@ -75,10 +87,6 @@ function M.config()
           cmp.complete()
         end
       end),
-    },
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
     },
     sources = {
       {name = 'nvim_lsp'},

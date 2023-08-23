@@ -1,15 +1,24 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "windwp/nvim-ts-autotag"
+  },
   build = ":TSUpdate",
 }
 
 function M.config()
   require("nvim-treesitter.configs").setup({
-    auto_install = true,
     highlight = {
       enable = true
     },
-    additional_vim_regex_highlighting = true,
+    autotag = {
+      enable = true
+    },
+    indent = {
+      enable = true,
+      disable = {"html",},
+    }
+
   })
 end
 

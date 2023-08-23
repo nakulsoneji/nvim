@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.opt.scrolloff = 4
+
 -- for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -12,7 +14,6 @@ vim.o.mousemoveevent = true
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
-
 vim.opt.backspace = '2'
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
@@ -24,10 +25,11 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
+vim.opt.backspace = "indent,start,eol"
 
 -- Line numbers
 vim.wo.number = true
 
-vim.opt.pumblend = 15
+-- causes cmp icons to be different sizes, most likely terminal's fault
+-- vim.opt.pumblend = 15
+vim.opt.pumheight = 10

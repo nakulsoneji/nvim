@@ -10,7 +10,8 @@ function M.config()
     custom_highlights = function(colors)
       return {
         Pmenu = {bg = colors.base},
-        NormalFloat = {bg = colors.base}
+        NormalFloat = {bg = colors.base},
+        FloatBorder = {fg = colors.text}
       }
     end,
   })

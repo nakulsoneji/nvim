@@ -1,5 +1,6 @@
 -- fix html script indentation
-vim.cmd([[ let g:html_indent_style1 = "inc"]])
+vim.cmd([[ let g:html_indent_style1 = "inc" ]])
+vim.cmd([[ let g:html_indent_script1 = "inc" ]])
 
 vim.cmd([[ set noswapfile ]])
 
@@ -19,4 +20,4 @@ vim.fn.sign_define("DiagnosticSignHint",
   {text = " ", texthl = "DiagnosticSignHint"})
 
 vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#89b4fa", bg = "NONE", italic = true })
-
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
