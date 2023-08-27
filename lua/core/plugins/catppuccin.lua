@@ -11,7 +11,7 @@ function M.config()
       return {
         Pmenu = {bg = colors.base},
         NormalFloat = {bg = colors.base},
-        FloatBorder = {fg = colors.text}
+        --FloatBorder = {fg = colors.text}
       }
     end,
   })

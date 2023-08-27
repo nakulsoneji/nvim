@@ -12,6 +12,11 @@ local M = {
 function M.config()
   require("lualine").setup({
     options = {
+      disabled_filetypes = {
+        statusline = {
+          "alpha"
+        }
+      },
       component_separators = {
          left = "",
         right = "",

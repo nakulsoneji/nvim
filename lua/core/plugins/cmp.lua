@@ -18,7 +18,7 @@ local M = {
 function M.config()
   local cmp = require('cmp')
   local cmp_action = require('lsp-zero').cmp_action()
-  local cmp_select_opts = {behavior = cmp.SelectBehavior.Select}
+  local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
   require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -28,6 +28,7 @@ function M.config()
         require('luasnip').lsp_expand(args.body)
       end,
     },
+
     --[[formatting = {
       format = function(entry, item)
         item.menu = ({
@@ -39,35 +40,40 @@ function M.config()
 
         return item
       end,
-    },]]--
+    },]] --
+
     window = {
       completion = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
       },
+
       documentation = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
       }
     },
+
     experimental = {
       ghost_text = true,
     },
+
     formatting = {
-      fields = {"abbr", "menu", "kind"},
+      fields = { "kind", "abbr", "menu" },
       format = require('lspkind').cmp_format({
-        mode = 'symbol_text', -- show only symbol and text annotations
-        maxwidth = 50, -- prevent the popup from showing more than provided characters
-        preset = "codicons",
+        mode = 'symbol', -- show only symbol and text annotations
+        maxwidth = 50,   -- prevent the popup from showing more than provided characters
+        --preset = "codicons",
         symbol_map = { Copilot = " " },
-        ellipsis_char = '...',-- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead })
+        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead })
       }),
     },
-    mapping = {
+
+    mapping = cmp.mapping.preset.insert({
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ['<C-f>'] = cmp_action.luasnip_jump_forward(),
       ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-      ['<C-y>'] = cmp.mapping.confirm({select = true}),
+      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<C-u>'] = cmp.mapping.scroll_docs(-4),
       ['<C-d>'] = cmp.mapping.scroll_docs(4),
@@ -87,14 +93,20 @@ function M.config()
           cmp.complete()
         end
       end),
-    },
-    sources = {
-      {name = 'nvim_lsp'},
-      {name = 'luasnip'},
-      {name = 'path'},
-      {name = 'buffer'},
-    }
+    }),
+
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp',  },
+      { name = 'luasnip',   },
+      { name = 'buffer',    },
+      { name = 'path',      },
+    }),
+
+    --[[performance = {
+      throttle = 550,
+    }]]--
   })
+
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {

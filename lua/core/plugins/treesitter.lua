@@ -9,7 +9,8 @@ local M = {
 function M.config()
   require("nvim-treesitter.configs").setup({
     highlight = {
-      enable = true
+      enable = true,
+      disable = {"alpha",},
     },
     autotag = {
       enable = true
