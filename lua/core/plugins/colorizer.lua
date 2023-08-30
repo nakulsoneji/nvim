@@ -7,7 +7,7 @@ function M.config()
     user_default_options = {
       css = true,
       always_update = true,
-      tailwind = "both",
+      tailwind = true,
     }
   })
 end

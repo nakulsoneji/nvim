@@ -12,7 +12,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local opts = {}
+local opts = {
+  ui = {
+    border = "none"
+  }
+}
+
 require("lazy").setup("core.plugins", opts)
 
 

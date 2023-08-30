@@ -8,17 +8,22 @@ local M = {
 
 function M.config()
   require("lspsaga").setup({
+    ui = {
+      border = 'rounded',
+    },
     lightbulb = {
       enable = false
     },
     diagnostic = {
       show_code_action = false,
-      border_follow = false,
     },
     hover = {
       open_link = 'ff',
       open_cmd = '!firefox'
-    }
+    },
+    outline = {
+      layout = 'float',
+    },
   })
 end
 

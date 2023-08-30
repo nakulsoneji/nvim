@@ -17,7 +17,7 @@ local M = {
       callback = function()
         vim.b.miniindentscope_disable = true
       end,
-    }) 
+    })
   end
 }
 

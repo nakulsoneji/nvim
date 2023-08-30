@@ -18,12 +18,12 @@ function M.config()
         }
       },
       component_separators = {
-         left = "",
-        right = "",
+         left = "│",
+        right = "│",
       },
       section_separators = {
-        left = "",
-        right = "",
+        left = "",
+        right = "",
       },
       globalstatus = true,
     },

@@ -8,8 +8,22 @@ local M = {
 }
 
 function M.config()
-  require("telescope").setup()
-  require("telescope").load_extension("file_browser")
+  local telescope = require("telescope")
+
+  telescope.setup({
+    defaults = {
+      sorting_strategy = "ascending",
+      path_display = { "truncate" },
+      layout_strategy = "horizontal",
+      layout_config = {
+        horizontal = { prompt_position = "top" },
+      },
+      prompt_prefix = "   ",
+      selection_caret = "❯ "
+    }
+  })
+
+  telescope.load_extension("file_browser")
 end
 
 return M

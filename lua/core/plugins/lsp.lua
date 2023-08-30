@@ -17,15 +17,14 @@ function M.config()
 	local lsp = require("lsp-zero").preset({
 		name = "lsp-only",
 	})
-
 	lsp.on_attach(function(_, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
 		lsp.default_keymaps({ bufnr = bufnr })
 		local opts = { noremap = true, silent = true, buffer = true }
-		vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-		vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-		vim.keymap.set("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+		vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
+		vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 		vim.keymap.set("n", "gd", "<cmd>Lspsaga finder<cr>", opts)
 		vim.keymap.set("n", "gt", "<cmd>Lspsaga goto_type_definition<cr>", opts)
@@ -42,8 +41,23 @@ function M.config()
 
 	lsp.skip_server_setup({ "rust_analyzer" })
 
-
 	lsp.setup()
+
+  vim.diagnostic.config({
+    severity_sort = true,
+    float = {
+      border = "none",
+      severity_sort = true,
+      prefix = "",
+      header = ""
+    },
+    virtual_text = {
+      severity = {
+        min = vim.diagnostic.severity.WARN
+      }
+    },
+  })
+
 end
 
 return M

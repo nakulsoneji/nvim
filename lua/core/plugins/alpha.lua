@@ -16,7 +16,7 @@ function M.config()
 
   dashboard.section.buttons.val = {
     dashboard.button( "SPC n  ", "  New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "SPC f f", "󰍉  Find Files" , ":Telescope find_files <CR>"),
+    dashboard.button( "SPC f f", "  Find Files" , ":Telescope find_files <CR>"),
     dashboard.button( "SPC f g", "  Live Grep", ":Telescope live_grep <CR>"),
     dashboard.button( "SPC f e", "  Browse Files", ":Telescope file_browser <CR>"),
     dashboard.button( "SPC f o", "  Recent Files", ":Telescope oldfiles <CR>"),

@@ -44,15 +44,20 @@ function M.config()
 
     window = {
       completion = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+        --border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel',
       },
 
       documentation = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        --border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
       }
     },
+
+    --[[window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },]]--
 
     experimental = {
       ghost_text = true,
@@ -96,10 +101,10 @@ function M.config()
     }),
 
     sources = cmp.config.sources({
-      { name = 'nvim_lsp',  },
-      { name = 'luasnip',   },
-      { name = 'buffer',    },
-      { name = 'path',      },
+      { name = 'nvim_lsp', },
+      { name = 'luasnip', },
+      { name = 'buffer', },
+      { name = 'path', },
     }),
 
     --[[performance = {

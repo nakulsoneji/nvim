@@ -24,10 +24,13 @@ function M.config()
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
+      hover = {
+        silent = true
+      }
     },
     presets = {
-      lsp_doc_border = true,
-    }
+      lsp_doc_border = false,
+    },
   })
 end
 
