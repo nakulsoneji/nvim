@@ -54,5 +54,3 @@ if is_available "alpha-nvim" then
     end,
   })
 end
-
-

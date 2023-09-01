@@ -1,7 +1,6 @@
 -- fix html script indentation
 vim.cmd([[ let g:html_indent_style1 = "inc" ]])
 vim.cmd([[ let g:html_indent_script1 = "inc" ]])
-
 vim.cmd([[ set noswapfile ]])
 
 -- use undercurl
