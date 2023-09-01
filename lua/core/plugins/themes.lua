@@ -33,7 +33,8 @@ function M.config()
       notify = true,
       telescope = {
         --style = "nvchad"
-      }
+      },
+      neotree = true,
 		},
 	})
 

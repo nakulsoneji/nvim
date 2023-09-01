@@ -9,9 +9,16 @@ local M = {
       "williamboman/mason.nvim",
       cmd = "Mason"
     }, -- Optional
-
+    { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+    {
+      "folke/neodev.nvim",
+      opts = {
+        library = {
+          plugins = false
+        },
+      }
+    },
     {'L3MON4D3/LuaSnip'},
-
     {'hrsh7th/cmp-nvim-lsp'}, -- Required
 	},
   event = {"BufReadPre", "BufNewFile"}
@@ -21,6 +28,7 @@ function M.config()
 	local lsp = require("lsp-zero").preset({
     name = "lsp-only"
   })
+
 	lsp.on_attach(function(_, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
@@ -41,7 +49,16 @@ function M.config()
 		automatic_installation = true,
 	})
 	-- (Optional) Configure lua language server for neovim
-  require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+  --require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+  require("lspconfig").lua_ls.setup({
+    settings = {
+      Lua = {
+        workspace = {
+          checkThirdParty = false,
+        },
+      }
+    }
+  })
 
 	lsp.skip_server_setup({ "rust_analyzer" })
 
