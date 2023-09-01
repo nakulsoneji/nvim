@@ -5,11 +5,14 @@ local M = {
 		-- LSP Support 
     { "neovim/nvim-lspconfig" },
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-		{"williamboman/mason.nvim",}, -- Optional
+		{
+      "williamboman/mason.nvim",
+      cmd = "Mason"
+    }, -- Optional
 
-    {'hrsh7th/nvim-cmp'}, -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
     {'L3MON4D3/LuaSnip'},
+
+    {'hrsh7th/cmp-nvim-lsp'}, -- Required
 	},
   event = {"BufReadPre", "BufNewFile"}
 }
