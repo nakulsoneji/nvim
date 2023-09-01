@@ -1,5 +1,6 @@
 local M = {
-  "lewis6991/gitsigns.nvim"
+  "lewis6991/gitsigns.nvim",
+  event = {"BufReadPre", "BufNewFile"} 
 }
 
 function M.config()

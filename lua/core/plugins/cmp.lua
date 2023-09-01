@@ -13,6 +13,7 @@ local M = {
     "saadparwaiz1/cmp_luasnip",
     "onsails/lspkind.nvim",
   },
+  event = "InsertEnter"
 }
 
 function M.config()

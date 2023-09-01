@@ -18,7 +18,8 @@ local M = {
         vim.b.miniindentscope_disable = true
       end,
     })
-  end
+  end,
+  event = "VeryLazy"
 }
 
 function M.config()

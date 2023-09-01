@@ -25,8 +25,8 @@ function M.config()
         ["cmp.entry.get_documentation"] = true,
       },
       hover = {
-        silent = true
-      }
+        silent = true,
+      },
     },
     presets = {
       lsp_doc_border = false,

@@ -1,20 +1,15 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  dependencies = {
-    {
-      "nvim-tree/nvim-web-devicons",
-      lazy = true,
-    },
-  },
 }
 
 function M.config()
   require("lualine").setup({
     options = {
+      theme = "catppuccin",
       disabled_filetypes = {
         statusline = {
-          "alpha"
+          "alpha",
         }
       },
       component_separators = {

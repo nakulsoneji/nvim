@@ -1,22 +1,23 @@
 local M = {
-	"VonHeikemen/lsp-zero.nvim",
+	"nakulsoneji/lsp-zero.nvim",
 	branch = "v2.x",
 	dependencies = {
 		-- LSP Support 
-		{ "neovim/nvim-lspconfig" }, -- Required
-		{ "williamboman/mason.nvim" }, -- Optional
+    { "neovim/nvim-lspconfig" },
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+		{"williamboman/mason.nvim",}, -- Optional
 
-    {'hrsh7th/nvim-cmp'},     -- Required
+    {'hrsh7th/nvim-cmp'}, -- Required
     {'hrsh7th/cmp-nvim-lsp'}, -- Required
     {'L3MON4D3/LuaSnip'},
 	},
+  event = {"BufReadPre", "BufNewFile"}
 }
 
 function M.config()
 	local lsp = require("lsp-zero").preset({
-		name = "lsp-only",
-	})
+    name = "lsp-only"
+  })
 	lsp.on_attach(function(_, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions

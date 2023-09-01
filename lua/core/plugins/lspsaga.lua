@@ -3,7 +3,8 @@ local M = {
   dependencies = {
     'nvim-treesitter/nvim-treesitter', -- optional
     'nvim-tree/nvim-web-devicons'     -- optional
-  }
+  },
+  event = {"BufReadPre", "BufNewFile"}
 }
 
 function M.config()

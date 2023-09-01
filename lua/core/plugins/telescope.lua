@@ -4,7 +4,8 @@ local M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
-  }
+  },
+  cmd = "Telescope",
 }
 
 function M.config()

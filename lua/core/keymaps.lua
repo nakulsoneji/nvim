@@ -9,6 +9,6 @@ map('n', '<leader>fo', "<cmd>Telescope oldfiles")
 map('n', '<leader>fe', "<cmd>Telescope file_browser<cr>", {})
 
 
-map('n', '<leader>ft', "<cmd>NvimTreeToggle<cr>")
+map('n', '<leader>ft', "<cmd>NvimTreeToggle<cr>", {})
 
 map({'n','t'}, '<A-d>', '<cmd>Lspsaga term_toggle<cr>', {})
