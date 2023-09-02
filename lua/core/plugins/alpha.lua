@@ -37,6 +37,15 @@ function M.config()
   dashboard.section.footer.val = fortune()
 
   dashboard.config.opts.noautocmd = false
+  if vim.o.filetype == "lazy" then
+    vim.cmd.close()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "AlphaReady",
+      callback = function()
+        require("lazy").show()
+      end,
+    })
+  end
 
   alpha.setup(dashboard.config)
 end

@@ -5,10 +5,6 @@ local M = {
 		-- LSP Support 
     { "neovim/nvim-lspconfig" },
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-		{
-      "williamboman/mason.nvim",
-      cmd = "Mason"
-    }, -- Optional
     { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
     {
       "folke/neodev.nvim",
