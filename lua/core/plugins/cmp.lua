@@ -5,23 +5,16 @@ local M = {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
-		{
-			"L3MON4D3/LuaSnip",
-			dependencies = { "rafamadriz/friendly-snippets" },
-		},
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
 	},
-	event = "InsertEnter",
+	event = { "InsertEnter", "CmdlineEnter" },
 }
 
 function M.config()
 	local cmp = require("cmp")
-	local cmp_action = require("lsp-zero").cmp_action()
 	local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 	local defaults = require("cmp.config.default")()
-
-	require("luasnip.loaders.from_vscode").lazy_load()
 
 	cmp.setup({
 		snippet = {
@@ -79,8 +72,6 @@ function M.config()
 
 		mapping = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			["<C-f>"] = cmp_action.luasnip_jump_forward(),
-			["<C-b>"] = cmp_action.luasnip_jump_backward(),
 			["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			["<C-e>"] = cmp.mapping.abort(),
 			["<C-u>"] = cmp.mapping.scroll_docs(-4),

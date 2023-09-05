@@ -6,7 +6,7 @@ local M = {
 function M.config()
   require("lualine").setup({
     options = {
-      theme = "catppuccin",
+      theme = "auto",
       disabled_filetypes = {
         statusline = {
           "alpha",

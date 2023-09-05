@@ -67,7 +67,6 @@ function M.config()
     style="night",
   })
   vim.cmd.colorscheme "tokyonight"
-end
-]]
---
+end]]--
+
 return M
