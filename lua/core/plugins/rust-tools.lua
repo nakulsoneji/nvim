@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     "neovim/nvim-lspconfig"
   },
-  event = {"BufReadPre", "BufNewFile"}
+  ft = {"rust"}
 }
 
 function M.config()

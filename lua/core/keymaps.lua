@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local utils = require("core.utils")
 
-map('n', '<leader>ff', utils.telescope("files"), {})
+map('n', '<leader>ff', "<cmd>Telescope find_files<cr>", {})
 map('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", {})
 map('n', '<leader>fb', "<cmd>Neotree toggle source=buffers<cr>", {})
 map('n', '<leader>fh', "<cmd>Telescope help_tags<cr>", {})

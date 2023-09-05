@@ -130,7 +130,11 @@ function M.config()
       },
     },
     default_component_configs = {
-      indent = { padding = 0 },
+      indent = {
+        with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+        expander_collapsed = "",
+        expander_expanded = "",
+      },
       icon = {
         folder_closed = " ",
         folder_open = " ",

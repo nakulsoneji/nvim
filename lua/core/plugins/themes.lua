@@ -15,8 +15,7 @@ function M.config()
 				--FloatBorder = { fg = colors.overlay0, bg = colors.mantle },
 				--RenameNormal = { bg = colors.mantle },
 			}
-		end,]]
-		--
+		end,]]--
 		integrations = {
 			lsp_saga = true,
 			native_lsp = {
@@ -41,8 +40,8 @@ function M.config()
 	vim.cmd.colorscheme("catppuccin")
 end
 
---[[
-local M = {
+
+--[[local M = {
   "rebelot/kanagawa.nvim",
   name = "kanagawa",
   priority = 1000,
@@ -54,9 +53,8 @@ function M.config()
     }
   })
   vim.cmd.colorscheme("kanagawa")
-end
-]]
---
+end]]--
+
 
 --[[local M = {
   "folke/tokyonight.nvim",
