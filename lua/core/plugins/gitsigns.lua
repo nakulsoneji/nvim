@@ -1,5 +1,7 @@
 local M = {
   "lewis6991/gitsigns.nvim",
+  -- newer version has lag, just use 0.6 commit
+  version = "^0.6",
   ft = { "gitcommit", "diff" },
   init = function()
     -- load gitsigns only when a git file is opened

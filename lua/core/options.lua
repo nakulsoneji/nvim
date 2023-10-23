@@ -1,5 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 vim.opt.scrolloff = 4
 
 -- for nvim-tree
@@ -28,12 +29,12 @@ vim.opt.expandtab = true
 vim.opt.backspace = "indent,start,eol"
 
 -- Line numbers
-vim.wo.number = true
+vim.opt.number = true
 
 -- causes cmp icons to be different sizes, most likely terminal's fault
 -- vim.opt.pumblend = 15
 vim.opt.pumheight = 10
 
-vim.opt.signcolumn = 'yes'
 -- config this later
 --vim.opt.statuscolumn = '%=%C%l %s'
+vim.opt.indentkeys = "0{,0},0#,!^F,o,O,e"

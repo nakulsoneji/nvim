@@ -21,7 +21,6 @@ autocmd("BufWinEnter", {
   end,
 })
 
-
 if is_available "alpha-nvim" then
   autocmd({ "User", "BufEnter" }, {
     desc = "Disable status, tablines, and cmdheight for alpha",
@@ -72,3 +71,12 @@ if is_available "alpha-nvim" then
     end,
   })
 end
+
+--[[autocmd({"BufNewFile", "BufRead"}, {
+  pattern = { "*.vert, *.tesc, *.tese, *.glsl, *.geom, *.frag, *.comp, *.rgen, *.rmiss, *.rchit, *.rahit, *.rint, *.rcall" },
+  callback = function()
+    vim.opt.filetype = "glsl"
+  end
+})]]--
+
+

@@ -17,6 +17,7 @@ function M.config()
 	local defaults = require("cmp.config.default")()
 
 	cmp.setup({
+
 		snippet = {
 			expand = function(args)
 				require("luasnip").lsp_expand(args.body)
@@ -36,6 +37,7 @@ function M.config()
       end,
     },]]
 		--
+    preselect = cmp.PreselectMode.None,
 
 		window = {
 			completion = {
@@ -67,6 +69,10 @@ function M.config()
 				--preset = "codicons",
 				symbol_map = { Copilot = " " },
 				ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead })
+        before = function(_, vim_item)
+          vim_item.abbr = string.gsub(vim_item.abbr, "^%s*(.-)%s*$", "%1")
+          return vim_item
+        end
 			}),
 		},
 
@@ -104,9 +110,8 @@ function M.config()
 		sorting = defaults.sorting,
 
 		--[[performance = {
-      throttle = 550,
-    }]]
-		--
+      max_view_entries = 20,
+    }]]--
 	})
 
 	cmp.setup.cmdline("/", {

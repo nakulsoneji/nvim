@@ -20,3 +20,15 @@ vim.fn.sign_define("DiagnosticSignHint",
 
 vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#89b4fa", bg = "NONE", italic = true })
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
+vim.filetype.add({
+  extension = {
+    vert = "vert",
+    tesc = "tesc",
+    tese = "tese",
+    frag = "frag",
+    geom = "geom",
+    comp = "comp",
+  }
+})
+

@@ -1,6 +1,6 @@
 local M = {
-	"VonHeikemen/lsp-zero.nvim",
-	branch = "v3.x",
+	"nakulsoneji/lsp-zero.nvim",
+	branch = "v2.x",
 	dependencies = {
 		-- LSP Support 
     { "neovim/nvim-lspconfig" },
@@ -16,21 +16,18 @@ local M = {
     },
     {'hrsh7th/cmp-nvim-lsp'}, -- Required
 	},
-  init = function()
-    vim.g.lsp_zero_extend_cmp = 0
-    vim.g.lsp_zero_ui_float_border = 0
-  end,
-  --event = "UIEnter"
   event = {"BufReadPre", "BufNewFile"}
 }
 
 function M.config()
-	local lsp_zero = require("lsp-zero")
+	local lsp = require("lsp-zero").preset({
+    name = "lsp-only"
+  })
 
-	lsp_zero.on_attach(function(_, bufnr)
+	lsp.on_attach(function(_, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
-		lsp_zero.default_keymaps({ bufnr = bufnr })
+		lsp.default_keymaps({ bufnr = bufnr })
 		local opts = { noremap = true, silent = true, buffer = true }
 		vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
 		vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
@@ -45,13 +42,9 @@ function M.config()
 
 	require("mason-lspconfig").setup({
 		automatic_installation = true,
-    handlers = {
-      lsp_zero.default_setup,
-      rust_analyzer = lsp_zero.noop,
-      hls = lsp_zero.noop
-    }
 	})
-
+	-- (Optional) Configure lua language server for neovim
+  --require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
   require("lspconfig").lua_ls.setup({
     settings = {
       Lua = {
@@ -59,11 +52,12 @@ function M.config()
           checkThirdParty = false,
         },
       }
-    },
+    }
   })
 
-  --require("lspconfig").glslls.setup({})
-  require("lspconfig").glsl_analyzer.setup({})
+	lsp.skip_server_setup({ "rust_analyzer", "hls" })
+
+	lsp.setup()
 
   vim.diagnostic.config({
     severity_sort = true,

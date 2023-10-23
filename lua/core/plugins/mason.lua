@@ -1,6 +1,7 @@
 local M = {
   "williamboman/mason.nvim",
-  cmd = "Mason"
+  cmd = "Mason",
+  build = ":MasonUpdate"
 }
 
 function M.config()

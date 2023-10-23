@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     "neovim/nvim-lspconfig"
   },
-  ft = {"rust"}
+  ft = { "rust" }
 }
 
 function M.config()

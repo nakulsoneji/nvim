@@ -1,7 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    --"windwp/nvim-ts-autotag"
+    "windwp/nvim-ts-autotag"
   },
   build = ":TSUpdate",
   cmd = "TSUpdateSync",
@@ -15,9 +15,9 @@ function M.config()
       enable = true,
       disable = {"alpha",},
     },
-    --[[autotag = {
+    autotag = {
       enable = true
-    },]]--
+    },
     indent = {
       enable = true,
       disable = {"html",},
@@ -27,3 +27,4 @@ function M.config()
 end
 
 return M
+
