@@ -25,7 +25,7 @@ local M = {
 function M.config()
 	require("mini.indentscope").setup({
 		options = {
-			--try_as_border = true,
+			try_as_border = true,
 		},
 		symbol = "▎",
 	})

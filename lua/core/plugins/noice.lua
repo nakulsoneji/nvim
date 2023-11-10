@@ -15,7 +15,7 @@ function M.config()
   require("noice").setup({
     cmdline = {
       enabled = true,
-      view = "cmdline"
+      view = "cmdline_popup"
     },
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -29,8 +29,24 @@ function M.config()
       },
     },
     presets = {
+      bottom_search = true,
+      command_palette = true,
+      long_message_to_split = true,
       lsp_doc_border = false,
     },
+    routes = {
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
+          },
+        },
+        view = "mini",
+      },
+   },
   })
 end
 

@@ -2,29 +2,25 @@ local M = {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v3.x",
 	dependencies = {
-		-- LSP Support 
-    { "neovim/nvim-lspconfig" },
+		-- LSP Support
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-    { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-    {
-      "folke/neodev.nvim",
-      opts = {
-        library = {
-          plugins = false
-        },
-      }
-    },
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
+		{ "williambowman/mason.nvim" },
+		{ "folke/neoconf.nvim", cmd = "Neoconf" },
+		{ "folke/neodev.nvim", opts = {} },
+		{ "neovim/nvim-lspconfig", dependencies = { "folke/neoconf.nvim" } },
+		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
 	},
-  init = function()
-    vim.g.lsp_zero_extend_cmp = 0
-    vim.g.lsp_zero_ui_float_border = 0
-  end,
-  --event = "UIEnter"
-  event = {"BufReadPre", "BufNewFile"}
+	init = function()
+		vim.g.lsp_zero_extend_cmp = 0
+		vim.g.lsp_zero_ui_float_border = 0
+	end,
+	--event = "UIEnter"
+	event = { "BufReadPre", "BufNewFile" },
 }
 
 function M.config()
+	require("neoconf").setup({})
+
 	local lsp_zero = require("lsp-zero")
 
 	lsp_zero.on_attach(function(_, bufnr)
@@ -45,41 +41,47 @@ function M.config()
 
 	require("mason-lspconfig").setup({
 		automatic_installation = true,
-    handlers = {
-      lsp_zero.default_setup,
-      rust_analyzer = lsp_zero.noop,
-      hls = lsp_zero.noop
-    }
+		handlers = {
+			lsp_zero.default_setup,
+			clangd = function()
+				require("lspconfig").clangd.setup({
+					cmd = { "clangd", "--query-driver=/usr/bin/arm-none-eabi-*" },
+				})
+			end,
+			lua_ls = function()
+				require("lspconfig").lua_ls.setup({
+					settings = {
+						Lua = {
+							workspace = {
+								checkThirdParty = false,
+							},
+						},
+					},
+				})
+			end,
+			rust_analyzer = lsp_zero.noop,
+			hls = lsp_zero.noop,
+			jdtls = lsp_zero.noop,
+		},
 	})
 
-  require("lspconfig").lua_ls.setup({
-    settings = {
-      Lua = {
-        workspace = {
-          checkThirdParty = false,
-        },
-      }
-    },
-  })
+	--require("lspconfig").glslls.setup({})
+	require("lspconfig").glsl_analyzer.setup({})
 
-  --require("lspconfig").glslls.setup({})
-  require("lspconfig").glsl_analyzer.setup({})
-
-  vim.diagnostic.config({
-    severity_sort = true,
-    float = {
-      border = "none",
-      severity_sort = true,
-      prefix = "",
-      header = ""
-    },
-    virtual_text = {
-      severity = {
-        min = vim.diagnostic.severity.WARN
-      }
-    },
-  })
-
+	vim.diagnostic.config({
+		severity_sort = true,
+		float = {
+			border = "none",
+			severity_sort = true,
+			prefix = "",
+			header = "",
+		},
+		virtual_text = {
+			severity = {
+				min = vim.diagnostic.severity.WARN,
+			},
+		},
+	})
 end
 
 return M

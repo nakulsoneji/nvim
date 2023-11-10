@@ -108,10 +108,6 @@ function M.config()
 		}),
 
 		sorting = defaults.sorting,
-
-		--[[performance = {
-      max_view_entries = 20,
-    }]]--
 	})
 
 	cmp.setup.cmdline("/", {

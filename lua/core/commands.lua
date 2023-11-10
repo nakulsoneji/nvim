@@ -9,26 +9,22 @@ vim.cmd([[ set noswapfile ]])
 --vim.cmd.highlight('DiagnosticUnderlineInfo gui=undercurl')
 --vim.cmd.highlight('DiagnosticUnderlineHint gui=undercurl')
 
-vim.fn.sign_define("DiagnosticSignError",
-  { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn",
-  { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo",
-  { text = "󰋼 ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint",
-  { text = "󰌵", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "󰋼 ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#89b4fa", bg = "NONE", italic = true })
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
+--set all to glsl because otherwise treesitter highlight will not work
 vim.filetype.add({
-  extension = {
-    vert = "vert",
-    tesc = "tesc",
-    tese = "tese",
-    frag = "frag",
-    geom = "geom",
-    comp = "comp",
-  }
+	extension = {
+		vert = "glsl",
+		tesc = "glsl",
+		tese = "glsl",
+		frag = "glsl",
+		geom = "glsl",
+		comp = "glsl",
+	},
 })
-

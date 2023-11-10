@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.opt.scrolloff = 4
 
@@ -16,7 +16,7 @@ vim.opt.laststatus = 3
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
-vim.opt.backspace = '2'
+vim.opt.backspace = "2"
 vim.opt.showcmd = true
 vim.opt.autowrite = true
 vim.opt.autoread = true
@@ -37,4 +37,5 @@ vim.opt.pumheight = 10
 
 -- config this later
 --vim.opt.statuscolumn = '%=%C%l %s'
+vim.opt.statuscolumn = [[%!v:lua.require'core.util.ui'.statuscolumn()]]
 vim.opt.indentkeys = "0{,0},0#,!^F,o,O,e"
