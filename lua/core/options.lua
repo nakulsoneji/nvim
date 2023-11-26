@@ -34,6 +34,7 @@ vim.opt.number = true
 -- causes cmp icons to be different sizes, most likely terminal's fault
 -- vim.opt.pumblend = 15
 vim.opt.pumheight = 10
+vim.opt.pumwidth = 30
 
 -- config this later
 --vim.opt.statuscolumn = '%=%C%l %s'
